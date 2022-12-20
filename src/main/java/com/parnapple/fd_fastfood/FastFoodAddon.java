@@ -1,8 +1,10 @@
 package com.parnapple.fd_fastfood;
 
 import com.mojang.logging.LogUtils;
+import com.parnapple.fd_fastfood.items.AddonItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -19,6 +21,8 @@ public class FastFoodAddon
 
     public FastFoodAddon()
     {
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        AddonItems.register(eventBus);
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
